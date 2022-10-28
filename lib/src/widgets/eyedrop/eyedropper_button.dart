@@ -12,6 +12,8 @@ class EyedropperButton extends StatelessWidget {
   /// icon color, default : [Colors.blueGrey]
   final Color iconColor;
 
+  final Widget child;
+
   /// color selection callback
   final ValueChanged<Color> onColor;
 
@@ -21,25 +23,31 @@ class EyedropperButton extends StatelessWidget {
   const EyedropperButton({
     required this.onColor,
     this.onColorChanged,
-    this.icon = Icons.colorize,
-    this.iconColor = Colors.black54,
+    // this.icon = Icons.colorize,
+    // this.iconColor = Colors.black54,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) => Container(
-        decoration:
-            const BoxDecoration(color: Colors.white24, shape: BoxShape.circle),
-        child: IconButton(
-          icon: const Icon(Icons.colorize),
-          color: iconColor,
-          onPressed:
-              // cf. https://github.com/flutter/flutter/issues/22308
-              () => Future.delayed(
-            50.milliseconds,
-            () => _onEyeDropperRequest(context),
-          ),
+        decoration: const BoxDecoration(color: Colors.white24, shape: BoxShape.circle),
+        child: InkWell(
+          onTap: () async {
+            await Future.delayed(Duration(milliseconds: 50));
+            _onEyeDropperRequest(context)
+          },
+          child: child,
         ),
+        // child: IconButton(
+        //   icon: const Icon(Icons.colorize),
+        //   color: iconColor,
+        //   onPressed:
+        //       // cf. https://github.com/flutter/flutter/issues/22308
+        //       () => Future.delayed(
+        //     50.milliseconds,
+        //     () => _onEyeDropperRequest(context),
+        //   ),
+        // ),
       );
 
   void _onEyeDropperRequest(BuildContext context) {
