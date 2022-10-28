@@ -7,10 +7,10 @@ import 'eye_dropper_layer.dart';
 /// should be used with a context [EyeDrop] available
 class EyedropperButton extends StatelessWidget {
   /// customisable icon ( default : [Icons.colorize] )
-  final IconData icon;
+  // final IconData icon;
 
   /// icon color, default : [Colors.blueGrey]
-  final Color iconColor;
+  // final Color iconColor;
 
   final Widget child;
 
@@ -35,7 +35,7 @@ class EyedropperButton extends StatelessWidget {
         child: InkWell(
           onTap: () async {
             await Future.delayed(Duration(milliseconds: 50));
-            _onEyeDropperRequest(context)
+            _onEyeDropperRequest(context);
           },
           child: child,
         ),
