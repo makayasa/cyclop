@@ -20,9 +20,12 @@ class EyedropperButton extends StatelessWidget {
   /// hover, and the color changed callback
   final ValueChanged<Color>? onColorChanged;
 
+  final Function() onTap;
+
   const EyedropperButton({
     required this.onColor,
     required this.child,
+    required this.onTap,
     this.onColorChanged,
     // this.icon = Icons.colorize,
     // this.iconColor = Colors.black54,
@@ -34,6 +37,7 @@ class EyedropperButton extends StatelessWidget {
         decoration: const BoxDecoration(color: Colors.white24, shape: BoxShape.circle),
         child: InkWell(
           onTap: () async {
+            onTap();
             await Future.delayed(Duration(milliseconds: 50));
             _onEyeDropperRequest(context);
           },
