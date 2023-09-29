@@ -9,8 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  # image: ^3.0.5
-  image: ^4.0.6
+  image: ^3.0.5
+  # image: ^4.0.6
   quiver: ^3.0.1
   basics: ^0.6.0
 
